@@ -14,7 +14,7 @@ class Contact extends CI_Controller
     public function testDb($name = null)
     {
         $dbName = 'Connexion à la base de donnée '. $name;
-        $data['title'] = $dbName ?? 'Connexion à la base de donnée';
+        $data['title'] = $dbName;
 
         $this->load->database();
 
@@ -22,7 +22,10 @@ class Contact extends CI_Controller
         $result = '';
         require_once __DIR__.'./../models/Pokemon.php';
         foreach($query->result(Pokemon::class) as $poke){
-            $result .= $poke->getName. ' '; //grâce aux accolade on peut mettre des noms débiles
+            $result .= '<tr><td>'.$poke->getName(). '</td>'; //grâce aux accolades on peut mettre des noms débiles
+            $result .= '<td>'.$poke->getSize(). '</td>';
+            $result .= '<td>'.$poke->getWeight(). '</td>';
+            $result .= '<td>'.$poke->getCategory(). '</td></tr>';
         }
         $data['result'] = $result;
 

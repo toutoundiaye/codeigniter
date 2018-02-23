@@ -49,11 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'PokemonViewerController';
 $route['404_override'] = '';
-$route['contact'] = 'Contact/whoAreWe';
-$route['contact/(:any)'] = 'Contact/whoAreWe/$1';
-$route['test-route/(:num)'] = function($num) {return 'Contact/whoAreWe/test '.$num / 2;};
-$route['db'] = 'Contact/testDb';
-$route['db/(:any)'] = 'Contact/testDb/$1';
+$route['pokemon/(:num)'] = 'PokemonViewerController/detail/$1';
+$route['pokemon/create']['GET']= 'PokemonViewerController/create';
+$route['pokemon/create']['POST']= 'PokemonViewerController/add';
 $route['translate_uri_dashes'] = FALSE;
